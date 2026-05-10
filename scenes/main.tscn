@@ -1,0 +1,104 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcmain"]
+
+[ext_resource type="PackedScene" uid="uid://d2gamemap" path="res://scenes/game_map.tscn" id="1_game_map"]
+[ext_resource type="Script" path="res://scripts/ui/game_hud.gd" id="2_hud"]
+[ext_resource type="Script" path="res://scripts/main_game.gd" id="3_main"]
+[ext_resource type="PackedScene" uid="uid://game_over_001" path="res://scenes/ui/game_over.tscn" id="4_game_over"]
+
+[node name="Main" type="Node3D"]
+script = ExtResource("3_main")
+
+[node name="GameMap" parent="." instance=ExtResource("1_game_map")]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 1
+script = ExtResource("2_hud")
+
+[node name="TopBar" type="Panel" parent="HUD"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 62.0
+
+[node name="TitleLabel" type="Label" parent="HUD/TopBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_colors/font_color = Color(0.92, 0.98, 1, 1)
+theme_override_font_sizes/font_size = 23
+text = "MOBA Arena"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ControlsPanel" type="Panel" parent="HUD"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = -112.0
+offset_right = 760.0
+offset_bottom = -18.0
+
+[node name="ControlsLabel" type="Label" parent="HUD/ControlsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = 10.0
+offset_right = -14.0
+offset_bottom = -10.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 17
+text = "Controls"
+autowrap_mode = 2
+
+[node name="ObjectivePanel" type="Panel" parent="HUD"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -430.0
+offset_top = -180.0
+offset_right = -18.0
+offset_bottom = -18.0
+
+[node name="ObjectiveLabel" type="Label" parent="HUD/ObjectivePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 12.0
+offset_right = -16.0
+offset_bottom = -12.0
+theme_override_colors/font_color = Color(0.82, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "Objective"
+autowrap_mode = 2
+
+[node name="SkillPanel" type="Panel" parent="HUD"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -280.0
+offset_top = -68.0
+offset_right = 280.0
+offset_bottom = -18.0
+grow_horizontal = 2
+
+[node name="SkillLabel" type="Label" parent="HUD/SkillPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_colors/font_color = Color(1, 0.92, 0.72, 1)
+theme_override_font_sizes/font_size = 18
+text = "Q Arc Volley | E Phantom Steps | R Renewal | 1 Crescent Slash | 2 Thunder Field"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOver" parent="." instance=ExtResource("4_game_over")]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://daihero"]
+
+[ext_resource type="PackedScene" uid="uid://d3herobase" path="res://scenes/heroes/hero_base.tscn" id="1_hero_base"]
+[ext_resource type="Script" path="res://scripts/ai/ai_controller.gd" id="2_ai"]
+[ext_resource type="Script" path="res://scripts/ai/ai_state_machine.gd" id="3_state"]
+
+[node name="AIHero" instance=ExtResource("1_hero_base")]
+
+[node name="AIController" type="Node" parent="."]
+script = ExtResource("2_ai")
+
+[node name="AIStateMachine" type="Node" parent="AIController"]
+script = ExtResource("3_state")

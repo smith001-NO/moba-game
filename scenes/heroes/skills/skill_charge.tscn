@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcharge"]
+
+[ext_resource type="Script" path="res://scripts/heroes/skills/skill_charge.gd" id="1_charge"]
+
+[node name="SkillCharge" type="Node"]
+script = ExtResource("1_charge")

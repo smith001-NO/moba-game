@@ -1,0 +1,157 @@
+[gd_scene load_steps=18 format=3 uid="uid://d2gamemap"]
+
+[ext_resource type="Script" path="res://scripts/map/game_map.gd" id="1_gamemap"]
+[ext_resource type="Script" path="res://scripts/structures/minion_spawner.gd" id="2_spawner"]
+[ext_resource type="PackedScene" uid="uid://d3minion" path="res://scenes/minions/minion.tscn" id="3_minion"]
+[ext_resource type="PackedScene" uid="uid://d3herobase" path="res://scenes/heroes/hero_base.tscn" id="4_hero"]
+[ext_resource type="PackedScene" uid="uid://daihero" path="res://scenes/heroes/ai_hero.tscn" id="5_aihero"]
+[ext_resource type="PackedScene" uid="uid://nexus_001" path="res://scenes/structures/nexus.tscn" id="6_nexus"]
+[ext_resource type="PackedScene" uid="uid://tower_001" path="res://scenes/structures/tower.tscn" id="7_tower"]
+
+[sub_resource type="StandardMaterial3D" id="Mat_ground"]
+albedo_color = Color(0.09, 0.30, 0.12, 1)
+roughness = 0.9
+
+[sub_resource type="PlaneMesh" id="Mesh_ground"]
+size = Vector2(120, 120)
+
+[sub_resource type="BoxShape3D" id="Shape_ground"]
+size = Vector3(120, 0.2, 120)
+
+[sub_resource type="NavigationMesh" id="NavMesh_main"]
+cell_size = 0.25
+cell_height = 0.25
+agent_height = 1.8
+agent_radius = 0.4
+agent_max_climb = 0.5
+agent_max_slope = 45.0
+
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat"]
+sky_top_color = Color(0.18, 0.34, 0.56, 1)
+sky_horizon_color = Color(0.76, 0.84, 0.92, 1)
+sky_ground_color = Color(0.18, 0.2, 0.22, 1)
+ground_bottom_color = Color(0.08, 0.09, 0.12, 1)
+
+[sub_resource type="Sky" id="Sky_main"]
+sky_material = SubResource("SkyMat")
+
+[sub_resource type="Environment" id="Environment_main"]
+background_mode = 2
+background_sky = SubResource("Sky_main")
+ambient_light_source = 2
+ambient_light_color = Color(0.45, 0.48, 0.55, 1)
+ambient_light_energy = 1.1
+tonemap_mode = 2
+tonemap_exposure = 1.15
+
+[node name="GameMap" type="Node3D" groups=["game_map"]]
+script = ExtResource("1_gamemap")
+
+[node name="Terrain" type="MeshInstance3D" parent="."]
+mesh = SubResource("Mesh_ground")
+surface_material_override/0 = SubResource("Mat_ground")
+
+[node name="TerrainCollision" type="StaticBody3D" parent="."]
+position = Vector3(0, -0.1, 0)
+collision_layer = 1
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TerrainCollision"]
+shape = SubResource("Shape_ground")
+
+[node name="NavigationRegion" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavMesh_main")
+
+[node name="DirectionalLight" type="DirectionalLight3D" parent="."]
+position = Vector3(0, 16, 0)
+rotation = Vector3(-0.8, 0.72, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 130.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_main")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+position = Vector3(0, 20, 20)
+rotation = Vector3(-0.88, 0, 0)
+current = false
+fov = 50.0
+far = 380.0
+
+[node name="Path" type="Path3D" parent="."]
+
+[node name="BlueSpawn" type="Marker3D" parent="."]
+position = Vector3(-42, 0.65, 0)
+
+[node name="MinionSpawner" type="Node3D" parent="BlueSpawn"]
+script = ExtResource("2_spawner")
+team = 0
+spawn_interval = 12.0
+minions_per_wave = 4
+initial_delay = 1.0
+minion_scene = ExtResource("3_minion")
+
+[node name="RedSpawn" type="Marker3D" parent="."]
+position = Vector3(42, 0.65, 0)
+
+[node name="MinionSpawner" type="Node3D" parent="RedSpawn"]
+script = ExtResource("2_spawner")
+team = 1
+spawn_interval = 12.0
+minions_per_wave = 4
+initial_delay = 1.0
+minion_scene = ExtResource("3_minion")
+
+[node name="BlueBase" parent="." instance=ExtResource("6_nexus")]
+position = Vector3(-42, 0, 0)
+team = 0
+
+[node name="RedBase" parent="." instance=ExtResource("6_nexus")]
+position = Vector3(42, 0, 0)
+team = 1
+
+[node name="BlueTower1" parent="." instance=ExtResource("7_tower")]
+position = Vector3(-27, 0, 0)
+team = 0
+
+[node name="BlueTower2" parent="." instance=ExtResource("7_tower")]
+position = Vector3(-12, 0, 0)
+team = 0
+
+[node name="RedTower1" parent="." instance=ExtResource("7_tower")]
+position = Vector3(12, 0, 0)
+team = 1
+
+[node name="RedTower2" parent="." instance=ExtResource("7_tower")]
+position = Vector3(27, 0, 0)
+team = 1
+
+[node name="PlayerHero" parent="." instance=ExtResource("4_hero")]
+position = Vector3(-37, 1.0, 0)
+team = 0
+hero_class = "arc_knight"
+
+[node name="AIHero1" parent="." instance=ExtResource("5_aihero")]
+position = Vector3(-34, 1.0, 3.5)
+team = 0
+hero_class = "jade_guardian"
+
+[node name="AIHero2" parent="." instance=ExtResource("5_aihero")]
+position = Vector3(-34, 1.0, -3.5)
+team = 0
+hero_class = "blade_dancer"
+
+[node name="EnemyAI1" parent="." instance=ExtResource("5_aihero")]
+position = Vector3(34, 1.0, 3.5)
+team = 1
+hero_class = "storm_mage"
+
+[node name="EnemyAI2" parent="." instance=ExtResource("5_aihero")]
+position = Vector3(34, 1.0, -3.5)
+team = 1
+hero_class = "dawn_ranger"
+
+[node name="EnemyAI3" parent="." instance=ExtResource("5_aihero")]
+position = Vector3(38, 1.0, 0)
+team = 1
+hero_class = "blade_dancer"

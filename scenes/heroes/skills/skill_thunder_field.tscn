@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dthunder"]
+
+[ext_resource type="Script" path="res://scripts/heroes/skills/skill_thunder_field.gd" id="1_thunder"]
+
+[node name="SkillThunderField" type="Node"]
+script = ExtResource("1_thunder")

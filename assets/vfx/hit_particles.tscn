@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://hit_particles"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hit"]
+emission_shape = 0
+spread = 180.0
+particle_flag_align_y = false
+color = Color(1.0, 0.2, 0.15, 1.0)
+color_ramp = null
+initial_velocity_min = 3.0
+initial_velocity_max = 7.0
+angular_velocity_min = 0.0
+angular_velocity_max = 3.14
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+linear_accel_min = 0.0
+linear_accel_max = 0.0
+radial_accel_min = 0.0
+radial_accel_max = 0.0
+tangential_accel_min = 0.0
+tangential_accel_max = 0.0
+damping_min = 0.0
+damping_max = 0.5
+gravity = Vector3(0.0, -4.0, 0.0)
+lifetime_randomness = 0.3
+scale_min = 0.1
+scale_max = 0.4
+scale_curve = null
+
+[sub_resource type="QuadMesh" id="QuadMesh_hit"]
+size = Vector2(1.0, 1.0)
+material = null
+
+[node name="HitParticles" type="GpuParticles3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+amount = 32
+sub_emitter = null
+emitting = false
+visibility_rect = Rect3(-10, -10, -10, 20, 20, 20)
+lifetime = 0.8
+one_shot = true
+pre_process_time = 0.0
+explosiveness = 1.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+interp_to_end = false
+interpolate = false
+process_material = SubResource("ParticleProcessMaterial_hit")
+draw_order = 1
+draw_pass_1 = SubResource("QuadMesh_hit")

@@ -1,0 +1,13 @@
+占位防御塔模型说明
+=====================
+
+当前使用 Godot 内置的 BoxMesh 作为防御塔占位模型。
+
+- 节点类型: MeshInstance3D
+- Mesh: BoxMesh (size=1.5x3.0x1.5)
+- Material: 标准 SpatialMaterial，后续由 textures/ 目录下的纹理替换
+
+待办事项:
+- [ ] 使用 ComfyUI + Animagine XL 生成防御塔概念图
+- [ ] 将概念图转换为低多边形 3D 模型
+- [ ] 导出为 .glb/.gltf 格式替换此占位资源

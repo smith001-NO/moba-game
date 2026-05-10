@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dslash"]
+
+[ext_resource type="Script" path="res://scripts/heroes/skills/skill_melee_slash.gd" id="1_slash"]
+
+[node name="SkillMeleeSlash" type="Node"]
+script = ExtResource("1_slash")

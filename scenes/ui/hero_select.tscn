@@ -1,0 +1,80 @@
+[gd_scene load_steps=2 format=3 uid="uid://hero_select_001"]
+
+[ext_resource type="Script" path="res://scripts/ui/hero_select.gd" id="1_hero_select"]
+
+[node name="HeroSelect" type="CanvasLayer"]
+script = ExtResource("1_hero_select")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.02, 0.025, 0.035, 0.96)
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 60
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 22
+
+[node name="Title" type="Label" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+text = "Choose Your Hero"
+horizontal_alignment = 1
+
+[node name="HeroGrid" type="GridContainer" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 5
+
+[node name="InfoPanel" type="Panel" parent="ColorRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 170)
+layout_mode = 2
+
+[node name="HeroName" type="Label" parent="ColorRect/MarginContainer/VBoxContainer/InfoPanel"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 22.0
+offset_top = 16.0
+offset_right = -22.0
+offset_bottom = 52.0
+theme_override_font_sizes/font_size = 30
+text = "Hero"
+
+[node name="HeroDescription" type="Label" parent="ColorRect/MarginContainer/VBoxContainer/InfoPanel"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 22.0
+offset_top = 62.0
+offset_right = -22.0
+offset_bottom = 112.0
+theme_override_font_sizes/font_size = 20
+text = "Description"
+autowrap_mode = 2
+
+[node name="HeroRole" type="Label" parent="ColorRect/MarginContainer/VBoxContainer/InfoPanel"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 22.0
+offset_top = 118.0
+offset_right = -22.0
+offset_bottom = 154.0
+theme_override_font_sizes/font_size = 20
+text = "Role"
+
+[node name="ConfirmButton" type="Button" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 62)
+text = "Start Game"
+
+[node name="BackButton" type="Button" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 48)
+text = "Back"

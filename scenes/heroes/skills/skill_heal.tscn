@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dheal"]
+
+[ext_resource type="Script" path="res://scripts/heroes/skills/skill_heal.gd" id="1_heal"]
+
+[node name="SkillHeal" type="Node"]
+script = ExtResource("1_heal")

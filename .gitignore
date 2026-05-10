@@ -1,0 +1,27 @@
+# Godot 4 generated files
+.godot/
+*.import
+*.translation
+*.uid
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE files
+.vscode/settings.json
+.idea/
+
+# Build output
+export/
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+*~
+*.swp
+*.swo
+*.tmp

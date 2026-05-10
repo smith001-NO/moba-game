@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="HeroStats" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/heroes/hero_stats.gd" id="1_stats_script"]
+
+[resource]
+script = ExtResource("1_stats_script")
+hero_name = "Dawn Ranger"
+max_hp = 3850.0
+hp_regen = 29.0
+max_mp = 1500.0
+mp_regen = 36.0
+attack_damage = 345.0
+defense = 52.0
+attack_speed = 1.82
+attack_range = 8.7
+move_speed = 7.35

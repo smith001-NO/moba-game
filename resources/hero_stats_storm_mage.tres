@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="HeroStats" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/heroes/hero_stats.gd" id="1_stats_script"]
+
+[resource]
+script = ExtResource("1_stats_script")
+hero_name = "Storm Mage"
+max_hp = 3550.0
+hp_regen = 26.0
+max_mp = 2050.0
+mp_regen = 52.0
+attack_damage = 335.0
+defense = 46.0
+attack_speed = 1.28
+attack_range = 7.8
+move_speed = 7.0

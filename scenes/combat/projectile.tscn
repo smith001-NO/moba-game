@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://dproj_fireball"]
+
+[ext_resource type="Script" path="res://scripts/combat/projectile.gd" id="1_projectile"]
+
+[sub_resource type="StandardMaterial3D" id="Material_projectile"]
+albedo_color = Color(1, 0.45, 0.08, 1)
+emission_enabled = true
+emission = Color(1, 0.32, 0.05, 1)
+emission_energy_multiplier = 2.0
+roughness = 0.25
+
+[sub_resource type="SphereShape3D" id="Shape_projectile"]
+radius = 0.32
+
+[sub_resource type="SphereMesh" id="Mesh_projectile"]
+radius = 0.32
+height = 0.64
+material = SubResource("Material_projectile")
+
+[sub_resource type="BoxMesh" id="Mesh_trail"]
+size = Vector3(0.12, 0.12, 0.85)
+material = SubResource("Material_projectile")
+
+[node name="Projectile" type="Area3D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_projectile")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("Shape_projectile")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("Mesh_projectile")
+
+[node name="Trail" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, 0.45)
+mesh = SubResource("Mesh_trail")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 0.42, 0.08, 1)
+light_energy = 1.5
+omni_range = 4.0
